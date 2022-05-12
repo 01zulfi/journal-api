@@ -50,3 +50,47 @@ exports.createJournal = [
     });
   },
 ];
+
+exports.updateJournal = [
+  body('title', 'Title is required.').trim().notEmpty().escape(),
+  body('content', 'Content is required.').trim().notEmpty().escape(),
+  (req, res, next) => {
+    const errors = validationResult(req);
+    const journal = {
+      title: req.body.title,
+      content: req.body.content,
+      publish: Boolean(req.body.publish),
+    };
+
+    if (!errors.isEmpty()) {
+      return res.status(400).json({
+        message: 'Error while validating & sanitizing data.',
+        errors: errors.array(),
+        journal,
+      });
+    }
+
+    return Journal.findByIdAndUpdate(
+      req.params.id,
+      { ...journal },
+      {},
+      (err, result) => {
+        if (err) {
+          return res
+            .status(500)
+            .json({ message: 'Error while updating data.' });
+        }
+        return res.status(200).json({ message: 'Ok', journal: result });
+      },
+    );
+  },
+];
+
+exports.deleteJournal = (req, res, next) => {
+  Journal.findByIdAndRemove(req.params.id, (err) => {
+    if (err) {
+      return res.status(500).json({ message: 'Error while deleting data.' });
+    }
+    return res.status(200).json({ message: 'Ok' });
+  });
+};
