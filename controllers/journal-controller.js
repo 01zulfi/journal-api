@@ -38,7 +38,7 @@ exports.createJournal = [
     const journal = new Journal({
       title: req.body.title,
       content: req.body.content,
-      publish: false,
+      publish: Boolean(req.body.publish),
       author: req.user._id,
     });
 
