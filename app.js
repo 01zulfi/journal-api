@@ -30,6 +30,7 @@ passport.use(strategy);
 
 app.use('/login', loginRouter);
 app.use('/journal', journalRouter);
+app.use((req, res) => res.status(404).json({ message: 'Resource not found.' }));
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
