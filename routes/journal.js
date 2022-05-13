@@ -5,6 +5,7 @@ const controller = require('../controllers/journal-controller');
 const router = express.Router();
 
 router.get('/', controller.getJournals);
+router.get('/:id', controller.getOneJournal);
 router.post(
   '/',
   passport.authenticate('jwt', { session: false }),

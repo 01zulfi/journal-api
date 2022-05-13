@@ -18,6 +18,18 @@ exports.getJournals = (req, res, next) => {
     });
 };
 
+exports.getOneJournal = (req, res, next) => {
+  Journal.findById(req.params.id).exec((err, result) => {
+    if (err) {
+      return res.status(500).json({ message: 'Error while fetching data.' });
+    }
+    return res.status(200).json({
+      message: 'Ok',
+      journal: result,
+    });
+  });
+};
+
 exports.createJournal = [
   body('title', 'Title is required.').trim().notEmpty().escape(),
   body('content', 'Content is required.').trim().notEmpty().escape(),
