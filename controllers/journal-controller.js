@@ -31,8 +31,8 @@ exports.getOneJournal = (req, res, next) => {
 };
 
 exports.createJournal = [
-  body('title', 'Title is required.').trim().notEmpty().escape(),
-  body('content', 'Content is required.').trim().notEmpty().escape(),
+  body('title', 'Title is required.').trim().notEmpty(),
+  body('content', 'Content is required.').trim().notEmpty(),
   (req, res, next) => {
     const errors = validationResult(req);
 
@@ -64,8 +64,8 @@ exports.createJournal = [
 ];
 
 exports.updateJournal = [
-  body('title', 'Title is required.').trim().notEmpty().escape(),
-  body('content', 'Content is required.').trim().notEmpty().escape(),
+  body('title', 'Title is required.').trim().notEmpty(),
+  body('content', 'Content is required.').trim().notEmpty(),
   (req, res, next) => {
     const errors = validationResult(req);
     const journal = {
