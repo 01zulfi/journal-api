@@ -31,7 +31,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 passport.use(strategy);
 
 app.use('/login', loginRouter);
-app.use('/journal', journalRouter);
+app.use(
+  '/journal',
+  passport.authenticate('jwt', { session: false }),
+  journalRouter,
+);
 app.use((req, res) => res.status(404).json({ message: 'Resource not found.' }));
 
 // catch 404 and forward to error handler
