@@ -5,6 +5,7 @@ const { Schema } = mongoose;
 const JournalSchema = new Schema(
   {
     title: { type: String, required: true },
+    urlName: { type: String },
     content: { type: String },
     date: { type: String },
     publish: { type: Boolean, required: true },
