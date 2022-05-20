@@ -52,6 +52,9 @@ exports.getJournalByUrlName = (req, res, next) => {
     if (err) {
       return res.status(500).json({ message: 'Error while fetching data.' });
     }
+    if (!result) {
+      return res.status(404).json({ message: 'Resource not found.' });
+    }
     return res.status(200).json({
       message: 'Ok',
       journal: result,
