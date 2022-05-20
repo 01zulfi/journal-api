@@ -35,8 +35,20 @@ exports.getPublishedJournals = (req, res, next) => {
     });
 };
 
-exports.getOneJournal = (req, res, next) => {
+exports.getJournalById = (req, res, next) => {
   Journal.findById(req.params.id).exec((err, result) => {
+    if (err) {
+      return res.status(500).json({ message: 'Error while fetching data.' });
+    }
+    return res.status(200).json({
+      message: 'Ok',
+      journal: result,
+    });
+  });
+};
+
+exports.getJournalByUrlName = (req, res, next) => {
+  Journal.findOne({ urlName: req.params.urlName }).exec((err, result) => {
     if (err) {
       return res.status(500).json({ message: 'Error while fetching data.' });
     }
