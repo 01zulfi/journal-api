@@ -61,6 +61,7 @@ exports.getJournalByUrlName = (req, res, next) => {
 
 exports.createJournal = [
   body('title', 'Title is required.').trim().notEmpty(),
+  body('urlName', 'Url name is required.').trim().notEmpty(),
   body('content', 'Content is required.').trim().notEmpty(),
   (req, res, next) => {
     const errors = validationResult(req);
@@ -72,12 +73,15 @@ exports.createJournal = [
         journal: {
           title: req.body.title,
           content: req.body.content,
+          publish: req.body.publish,
+          urlName: req.body.urlName,
         },
       });
     }
 
     const journal = new Journal({
       title: req.body.title,
+      urlName: req.body.urlName,
       content: req.body.content,
       publish: Boolean(req.body.publish),
       author: req.user._id,
@@ -94,6 +98,7 @@ exports.createJournal = [
 
 exports.updateJournal = [
   body('title', 'Title is required.').trim().notEmpty(),
+  body('urlName', 'Url name is required.').trim().notEmpty(),
   body('content', 'Content is required.').trim().notEmpty(),
   (req, res, next) => {
     const errors = validationResult(req);
@@ -101,6 +106,7 @@ exports.updateJournal = [
       title: req.body.title,
       content: req.body.content,
       publish: Boolean(req.body.publish),
+      urlName: req.body.urlName,
     };
 
     if (!errors.isEmpty()) {
