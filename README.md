@@ -8,7 +8,7 @@ A RESTful API that serves my [Journal Admin](https://journal-admin.netlify.app/)
 
 ## Technologies
 
-- Written in a NodeJS Framwork: [Express](https://expressjs.com/)
+- Written in a NodeJS Framework: [Express](https://expressjs.com/)
 - Uses a RESTful architecture 
 - Utilizes [MongoDB](https://www.mongodb.com/) for database needs
 - Leverages [JSON Web Tokens](https://jwt.io/) and [Passport.js](https://www.passportjs.org/) for authentication
