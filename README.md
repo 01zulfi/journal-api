@@ -1,6 +1,6 @@
 # Journal API
 
-#### Link: https://journal-rest-api.herokuapp.com/journal
+#### Link: https://journal-rest-api.herokuapp.com/
 
 ## About
 
@@ -39,3 +39,29 @@ node create-user.js <username_here> <password_here>
 npm run serverstart
 ```
 
+## API Endpoints
+
+### Unprotected Routes
+
+#### 1. `/login`
+   - Accepts POST HTTP request
+   - Requires a `username` and `password` in request body (`req.body`)
+   - Sends a jwt token (accessible with `token` property). The token should be saved client side (localStorage), since they are required to access the protected routes
+   
+#### 2. `/published`
+   - A GET HTTP request sends back the list of published journals (accessible with `journals` property)
+  
+#### 3. `/published/:urlName`
+   - A GET HTTP request sends back a journal (`journal`) with the corresponding `urlName` property
+
+### Protected Routes
+
+Note: All requests to the following routes must be accompanied with a Authorization Header set to `"bearer ${jwt_token_here}"`
+
+#### 4. `/journal`
+   - A GET HTTP request sends back the list of all journals (`journals`) in the database
+   - A POST HTTP request saves journal in the database. Requires following properties in the request body: `title`, `urlName`, `content`. `publish` is an optional property. Afterwards, the new `journal` is sent back 
+
+#### 5. `/journal/:id`
+  - A PUT HTTP request updates a journal with the corresponding `_id` property. Works similarly to the POST `/journal`
+  - A DELETE HTTP request deletes a journal with the correspoding `_id` property
