@@ -64,4 +64,4 @@ Note: All requests to the following routes must be accompanied with a Authorizat
 
 #### 5. `/journal/:id`
   - A PUT HTTP request updates a journal with the corresponding `_id` property. Works similarly to the POST `/journal`
-  - A DELETE HTTP request deletes a journal with the correspoding `_id` property
+  - A DELETE HTTP request deletes a journal with the corresponding `_id` property
