@@ -1,6 +1,6 @@
 # Journal API
 
-#### Link: https://journal-rest-api.herokuapp.com/
+#### Link: https://journal-rest-api.cyclic.app/
 
 ## About
 
@@ -12,7 +12,7 @@ A RESTful API that serves my [Journal Admin](https://journal-admin.netlify.app/)
 - Uses a RESTful architecture 
 - Utilizes [MongoDB](https://www.mongodb.com/) for database needs
 - Leverages [JSON Web Tokens](https://jwt.io/) and [Passport.js](https://www.passportjs.org/) for authentication
-- Hosted on [Heroku](https://www.heroku.com/)
+- Hosted on [Cyclic](https://www.cyclic.sh/)
 
 ## Getting Started
 
