@@ -28,7 +28,7 @@ npm install
 4. Add a `.env` file with the following:
 ```
 MONGODB_URL="your mongodb connection url here"
-SESSION="any random long string here"
+SECRET="any random long string here"
 ```
 5. Create a user (don't include spaces in username and password):
 ```bash
